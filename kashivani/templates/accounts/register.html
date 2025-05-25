@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Authentication System</title>
+</head>
+<body>
+{% extends 'accounts/base.html' %}
+
+{% block title %}Register - Authentication System{% endblock %}
+
+{% block content %}
+<div class="auth-header">
+    <h2><i class="fas fa-user-plus text-primary"></i> Create Account</h2>
+    <p>Join us today and get started</p>
+</div>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="form-floating">
+        <input type="text" class="form-control" id="id_name" name="name"
+               placeholder="Full Name" value="{{ form.name.value|default:'' }}" required>
+        <label for="id_name"><i class="fas fa-user me-2"></i>Full Name</label>
+        {% if form.name.errors %}
+            <div class="text-danger small mt-1">{{ form.name.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-floating">
+        <input type="email" class="form-control" id="id_email" name="email"
+               placeholder="Email Address" value="{{ form.email.value|default:'' }}" required>
+        <label for="id_email"><i class="fas fa-envelope me-2"></i>Email Address</label>
+        {% if form.email.errors %}
+            <div class="text-danger small mt-1">{{ form.email.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-floating">
+        <input type="tel" class="form-control" id="id_phone_number" name="phone_number"
+               placeholder="Phone Number" value="{{ form.phone_number.value|default:'' }}">
+        <label for="id_phone_number"><i class="fas fa-phone me-2"></i>Phone Number</label>
+        {% if form.phone_number.errors %}
+            <div class="text-danger small mt-1">{{ form.phone_number.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-floating">
+        <textarea class="form-control" id="id_description" name="description"
+                  placeholder="Tell us about yourself" style="height: 100px">{{ form.description.value|default:'' }}</textarea>
+        <label for="id_description"><i class="fas fa-info-circle me-2"></i>About You</label>
+        {% if form.description.errors %}
+            <div class="text-danger small mt-1">{{ form.description.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_profile_pic" class="form-label">
+            <i class="fas fa-camera me-2"></i>Profile Picture (Optional)
+        </label>
+        <input type="file" class="form-control" id="id_profile_pic" name="profile_pic"
+               accept="image/*" style="border-radius: 10px;">
+        {% if form.profile_pic.errors %}
+            <div class="text-danger small mt-1">{{ form.profile_pic.errors.0 }}</div>
+        {% endif %}
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">
+        <i class="fas fa-user-plus me-2"></i>Create Account
+    </button>
+</form>
+
+<div class="auth-links">
+    <p>Already have an account? <a href="{% url 'login' %}">Sign In</a></p>
+</div>
+{% endblock %}
+</body>
+</html>
