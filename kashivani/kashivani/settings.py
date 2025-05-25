@@ -125,7 +125,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ayusharya.personal@gmail.com'  # Your email
 EMAIL_HOST_PASSWORD = 'eqni ffiy rzsz hgxt'
-SITE_URL = 'http://127.0.0.1:8000'
+SITE_URL = 'https://pl-beige.vercel.app'
 STATIC_URL = 'static/'
 
 # Default primary key field type
