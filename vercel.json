@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "kashivani/manage.py",
+      "src": "kashivani/kashivani/wsgi.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
@@ -13,7 +13,10 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "kashivani/manage.py"
+      "dest": "kashivani/kashivani/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "PYTHONPATH": "kashivani"
+  }
 }
